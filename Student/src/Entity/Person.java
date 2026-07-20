@@ -35,5 +35,4 @@ abstract class Person {
         this.birthYear = birthYear;
     }
 
-    abstract String getInfo();
 }

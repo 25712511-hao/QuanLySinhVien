@@ -41,7 +41,14 @@ public class CRUD {
 
             if (sv == null) {
                 System.out.println("Khônt tìm thấy sinh viên");
-                again = true;
+                System.out.println("Nhập 1 để nhập lại\nNhấn phím bất kì để hủy");
+                int cancelOption = service.checkOption(scan.nextLine());
+                switch (cancelOption){
+                    case 1 : again = true;
+                    break;
+                    default:
+                        again = false;
+                }
             } else {
                 System.out.println(sv);
             }
@@ -62,7 +69,14 @@ public class CRUD {
             Student sv = service.getStudentById(idStudent);
             if (sv == null) {
                 System.out.println("Không tìm thấy sinh viên");
-                again = true;
+                System.out.println("Nhập 1 để nhập lại\nNhấn phím bất kì để hủy");
+                int cancelOption = service.checkOption(scan.nextLine());
+                switch (cancelOption){
+                    case 1 : again = true;
+                        break;
+                    default:
+                        again = false;
+                }
             } else {
                 System.out.println(sv);
                 UpdateSelection[] options = UpdateSelection.values();
@@ -101,7 +115,14 @@ public class CRUD {
             Student sv = service.getStudentById(idStudent);
             if (sv == null) {
                 System.out.println("Không tìm thấy sinh viên");
-                again = true;
+                System.out.println("Nhập 1 để nhập lại\nNhấn phím bất kì để hủy");
+                int cancelOption = service.checkOption(scan.nextLine());
+                switch (cancelOption){
+                    case 1 : again = true;
+                        break;
+                    default:
+                        again = false;
+                }
             } else {
                 UpdateSelection[] options = UpdateSelection.values();
                 System.out.println("Mời lựa chọn thông tin cần xóa: ");
@@ -131,7 +152,14 @@ public class CRUD {
             Student sv = service.getStudentById(idStudent);
             if (sv == null) {
                 System.out.println("Không tìm thấy sinh viên");
-                again = true;
+                System.out.println("Nhập 1 để nhập lại\nNhấn phím bất kì để hủy");
+                int cancelOption = service.checkOption(scan.nextLine());
+                switch (cancelOption){
+                    case 1 : again = true;
+                        break;
+                    default:
+                        again = false;
+                }
             } else {
                 System.out.println("Xóa thành công");
                 service.deteleAllInfo(idStudent);

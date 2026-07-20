@@ -11,9 +11,9 @@ public class CheckStorage {
     }
 
     public Student found(String iD){
-        for (Student sv : list.getStudents()){
-            if (sv.getId().equals(iD)){
-                return sv;
+        for (Student stu : list.getStudents()){
+            if (stu.getId().equals(iD)){
+                return stu;
             }
         }
         return null;

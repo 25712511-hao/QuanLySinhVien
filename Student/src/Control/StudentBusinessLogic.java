@@ -25,6 +25,7 @@ public class StudentBusinessLogic implements ITypeCasting{
         }
         return Integer.parseInt(option);
     }
+
     public boolean saveData(String name, String id, int year, String schoolClass, String email, int intakeNumber){
         if (checkStorage.found(id) != null){
             return false;

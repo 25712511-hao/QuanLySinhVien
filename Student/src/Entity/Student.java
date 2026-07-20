@@ -40,9 +40,4 @@ public class Student extends Person{
     public String toString(){
         return ("Tên: "+getName() + ", MSSV: " +getId() + ", Năm sinh: "+getBirthYear()+ ", Lớp: "+getSchoolClass()+ ", Email: "+getEmail()+ ", Khóa: "+getIntakeNumber()+"\n");
     }
-
-    @Override
-    String getInfo() {
-        return "";
-    }
 }

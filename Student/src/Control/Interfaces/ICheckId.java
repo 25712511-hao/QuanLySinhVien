@@ -22,8 +22,8 @@ public interface ICheckId {
                         throw new IllegalArgumentException("Sinh viên có mã số này đã có trong danh sách");
                     } else {
                         for (char c : character) {
-                            if (!Character.isLetter(c) && !Character.isDigit(c)) {
-                                throw new IllegalArgumentException("MSSV chỉ được chứa chữ cái và số");
+                            if (!Character.isDigit(c)) {
+                                throw new IllegalArgumentException("MSSV chỉ được chứa số");
                             }
                         }
                     }
