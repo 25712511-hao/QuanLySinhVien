@@ -1,5 +1,5 @@
 package Control;
 
 public enum UpdateSelection {
-    NAME, ID, BIRTHYEAR, SCHOOLCLASS, EMAIL, INTAKENUMBER,
+    NAME, ID, BIRTHYEAR, SCHOOLCLASS,
 }

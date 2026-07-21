@@ -26,12 +26,12 @@ public class StudentBusinessLogic implements ITypeCasting{
         return Integer.parseInt(option);
     }
 
-    public boolean saveData(String name, String id, int year, String schoolClass, String email, int intakeNumber){
+    public boolean saveData(String name, String id, int year, String schoolClass){
         if (checkStorage.found(id) != null){
             return false;
         }
         else {
-            storage.saveData().add(new Student(name, id, year, schoolClass.toUpperCase(), email, intakeNumber));
+            storage.saveData().add(new Student(name, id, year, schoolClass.toUpperCase()));
             return true;
         }
     }
@@ -100,25 +100,6 @@ public class StudentBusinessLogic implements ITypeCasting{
                            stu.setSchoolClass(newValue);
                        }
                    }
-                   case EMAIL -> {
-                       validable = checkData.chekEmail(newValue);
-                       if (!validable.isResult()){
-                           return false;
-                       }
-                       else {
-                           stu.setEmail(newValue);
-                       }
-                   }
-                   case INTAKENUMBER -> {
-                       validable = checkData.checkName(newValue);
-                       if (!validable.isResult()){
-                           return false;
-                       }
-                       else {
-                           int value = stringToInt(newValue);
-                           stu.setIntakeNumber(value);
-                       }
-                   }
                    default -> {
                        return false;
                    }
@@ -128,37 +109,33 @@ public class StudentBusinessLogic implements ITypeCasting{
     }
 
 
-    public boolean deleteStudentInfo(String id, UpdateSelection option){
+    public boolean deleteStudentInfo(String id, UpdateSelection option) {
         Student stu = checkStorage.found(id);
-        if (stu == null){
+        if (stu == null) {
             return false;
-        }
-        else{
+        } else {
             switch (option) {
                 case NAME -> {
-                        stu.setName("");
+                    stu.setName("");
                 }
 
                 case ID -> {
-                        stu.setId("");
+                    stu.setId("");
                 }
 
                 case BIRTHYEAR -> {
-                        stu.setBirthYear(0);
+                    stu.setBirthYear(0);
                 }
 
                 case SCHOOLCLASS -> {
-                        stu.setSchoolClass("");
+                    stu.setSchoolClass("");
                 }
-                case EMAIL -> {
-                        stu.setEmail("");
-                }
-                case INTAKENUMBER -> {
-                        stu.setIntakeNumber(0);
-                    }
+                default -> {
+                    return false;
                 }
             }
-        return true;
+            return true;
+        }
     }
 
     public boolean deteleAllInfo(String id){

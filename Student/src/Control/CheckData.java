@@ -3,7 +3,7 @@ package Control;
 import Control.Interfaces.*;
 import Repository.StudentRepository;
 
-public class CheckData implements ICheckName, ICheckYear, ICheckId, ICheckClass, ICheckEmail, IIntakeNumber{
+public class CheckData implements ICheckName, ICheckYear, ICheckId, ICheckClass, IIntakeNumber{
     private StudentRepository repo;
     public CheckData(StudentRepository repository) {
         this.repo = repository;
@@ -28,16 +28,4 @@ public class CheckData implements ICheckName, ICheckYear, ICheckId, ICheckClass,
     public CheckedResult checkSchoolClass(String schoolClass) {
         return ICheckClass.super.checkSchoolClass(schoolClass);
     }
-
-    @Override
-    public CheckedResult chekEmail(String email) {
-        return ICheckEmail.super.chekEmail(email);
-    }
-
-    @Override
-    public CheckedResult checkIntakeNumber(String intakeNumber) {
-        return IIntakeNumber.super.checkIntakeNumber(intakeNumber);
-    }
-
-
 }

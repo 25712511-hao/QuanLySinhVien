@@ -61,24 +61,24 @@ public class DataInput implements ITypeCasting {
         return schoolClass;
     }
 
-    public String setEmailInput() {
-        do {
-            System.out.println("Nhập email của sinh viên (Vd: iuh123@gmail.com thì nhập iuh123):");
-            email = scan.nextLine();
-            check = checkData.chekEmail(email);
-            System.out.println(check.getNotification());
-        } while (!check.isResult());
-        email = email.concat("@gmail.com");
-        return email;
-    }
+//    public String setEmailInput() {
+//        do {
+//            System.out.println("Nhập email của sinh viên (Vd: iuh123@gmail.com thì nhập iuh123):");
+//            email = scan.nextLine();
+//            check = checkData.chekEmail(email);
+//            System.out.println(check.getNotification());
+//        } while (!check.isResult());
+//        email = email.concat("@gmail.com");
+//        return email;
+//    }
 
-    public int setIntakeNumberInput(){
-        do{
-            System.out.println("Nhập khóa của sinh viên (K21 thì nhập 21, K20 thì nhập 20) :");
-            intakeNumber = scan.nextLine();
-            check = checkData.checkIntakeNumber(intakeNumber);
-            System.out.println(check.getNotification());
-        } while(!check.isResult());
-        return stringToInt(intakeNumber);
-    }
+//    public int setIntakeNumberInput(){
+//        do{
+//            System.out.println("Nhập khóa của sinh viên (K21 thì nhập 21, K20 thì nhập 20) :");
+//            intakeNumber = scan.nextLine();
+//            check = checkData.checkIntakeNumber(intakeNumber);
+//            System.out.println(check.getNotification());
+//        } while(!check.isResult());
+//        return stringToInt(intakeNumber);
+//    }
 }

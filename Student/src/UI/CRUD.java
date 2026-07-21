@@ -18,10 +18,10 @@ public class CRUD {
             String id = ipnut.setIDInput();
             int year = ipnut.setYearInput();
             String schoolClass = ipnut.setSchoolClassInput();
-            String email = ipnut.setEmailInput();
-            int intakeNumber = ipnut.setIntakeNumberInput();
+//            String email = ipnut.setEmailInput();
+//            int intakeNumber = ipnut.setIntakeNumberInput();
 
-            boolean sucess = service.saveData(name, id, year, schoolClass, email, intakeNumber);
+            boolean sucess = service.saveData(name, id, year, schoolClass);
             if (sucess) {
                 System.out.println("Thêm thành công");
             } else {
