@@ -41,7 +41,7 @@ public class CRUD {
 
             if (sv == null) {
                 System.out.println("Khônt tìm thấy sinh viên");
-                System.out.println("Nhập 1 để nhập lại\nNhấn phím bất kì để hủy");
+                System.out.println("Nhập 1 để nhập lại\nNhấn phím bất kì khác phím số 1 để hủy");
                 int cancelOption = service.checkOption(scan.nextLine());
                 switch (cancelOption){
                     case 1 : again = true;
@@ -69,7 +69,7 @@ public class CRUD {
             Student sv = service.getStudentById(idStudent);
             if (sv == null) {
                 System.out.println("Không tìm thấy sinh viên");
-                System.out.println("Nhập 1 để nhập lại\nNhấn phím bất kì để hủy");
+                System.out.println("Nhập 1 để nhập lại\nNhấn phím bất kì khác phím số 1 để hủy");
                 int cancelOption = service.checkOption(scan.nextLine());
                 switch (cancelOption){
                     case 1 : again = true;
@@ -115,7 +115,7 @@ public class CRUD {
             Student sv = service.getStudentById(idStudent);
             if (sv == null) {
                 System.out.println("Không tìm thấy sinh viên");
-                System.out.println("Nhập 1 để nhập lại\nNhấn phím bất kì để hủy");
+                System.out.println("Nhập 1 để nhập lại\nNhấn phím bất kì khác phím số 1 để hủy");
                 int cancelOption = service.checkOption(scan.nextLine());
                 switch (cancelOption){
                     case 1 : again = true;
@@ -152,7 +152,7 @@ public class CRUD {
             Student sv = service.getStudentById(idStudent);
             if (sv == null) {
                 System.out.println("Không tìm thấy sinh viên");
-                System.out.println("Nhập 1 để nhập lại\nNhấn phím bất kì để hủy");
+                System.out.println("Nhập 1 để nhập lại\nNhấn phím bất kì khác phím số 1 để hủy");
                 int cancelOption = service.checkOption(scan.nextLine());
                 switch (cancelOption){
                     case 1 : again = true;

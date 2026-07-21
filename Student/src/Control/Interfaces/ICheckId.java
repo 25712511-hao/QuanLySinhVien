@@ -1,10 +1,7 @@
 package Control.Interfaces;
-
 import Control.CheckStorage;
 import Control.CheckedResult;
-import Entity.Student;
 import Repository.StudentRepository;
-import Control.StudentBusinessLogic;
 public interface ICheckId {
     public default CheckedResult checkId(String id, StudentRepository repository) {
         try {
