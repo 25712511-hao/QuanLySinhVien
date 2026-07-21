@@ -1,30 +1,32 @@
 package UI;
 
 import Entity.Student;
+import Entity.Grade;
 import Control.StudentBusinessLogic;
 import Control.UpdateSelection;
 import java.util.ArrayList;
-import java.util.Scanner;
-import Entity.Grade;
 import java.util.List;
+import java.util.Scanner;
 
 public class CRUD {
     Scanner scan = new Scanner(System.in);
     StudentBusinessLogic service = new StudentBusinessLogic();
-    DataInput input = new DataInput(service.getStorage());
+    DataInput ipnut = new DataInput(service.getStorage());
 
     public void create() {
         boolean again = false;
         do {
             again = false;
+            String name = ipnut.setNameInput();
+            String id = ipnut.setIDInput();
+            int year = ipnut.setYearInput();
+            String schoolClass = ipnut.setSchoolClassInput();
 
-            String name = input.setNameInput();
-            String id = input.setIDInput();
-            int year = input.setYearInput();
-            String schoolClass = input.setSchoolClassInput();
-            String email = input.setEmailInput();
-            int intakeNumber = input.setIntakeNumberInput();
+            // 🛠️ ĐÃ MỞ COMMENT: Lấy đủ 6 thông tin
+            String email = ipnut.setEmailInput();
+            int intakeNumber = ipnut.setIntakeNumberInput();
 
+            // 🛠️ ĐÃ SỬA: Truyền đủ 6 tham số vào saveData
             boolean sucess = service.saveData(name, id, year, schoolClass, email, intakeNumber);
             if (sucess) {
                 System.out.println("Thêm thành công");
@@ -49,7 +51,7 @@ public class CRUD {
                 int cancelOption = service.checkOption(scan.nextLine());
                 switch (cancelOption){
                     case 1 : again = true;
-                    break;
+                        break;
                     default:
                         again = false;
                 }
@@ -93,8 +95,8 @@ public class CRUD {
                     }
                     n = scan.nextInt();
                     scan.nextLine();
-                   checkOption = service.validOption(n);
-                }while (!checkOption);
+                    checkOption = service.validOption(n);
+                } while (!checkOption);
                 UpdateSelection select = options[n - 1];
 
                 System.out.println(" Nhập thông tin cần cập nhật:");
@@ -146,6 +148,7 @@ public class CRUD {
             }
         } while (again);
     }
+
     public void deteleAllInfo(){
         boolean again = false;
         do {
@@ -168,47 +171,7 @@ public class CRUD {
                 System.out.println("Xóa thành công");
                 service.deteleAllInfo(idStudent);
             }
-        }while (again);
-    }
-
-    public void seclectCRUD() {
-        boolean again = true;
-        do {
-            System.out.println("Mời lựa chọn (Nhập số phía trước các lựa chọn):\n1.Nhập thông tin\n2.In thông tin\n3.In toàn bộ danh sách\n4.Cập nhật thông tin\n5.Xóa thông tin\n6.Xóa toàn bộ thông tin của 1 sinh viên\nNhấn 0 để thoát");
-            int option = service.checkOption(scan.nextLine());
-            switch (option) {
-                case 1:
-                    create();
-                    break;
-                case 2:
-                    read();
-                    break;
-                case 3:
-                    System.out.println(readAll());
-                    break;
-                case 4:
-                    update();
-                    break;
-                case 5:
-                    delete();
-                    break;
-                case 6:
-                    deteleAllInfo();
-                    break;
-                case 7:
-                    addGradeUI();
-                    break;
-                case 8:
-                    readGradeUI();
-                    break;
-                case 0:
-                    again = false;
-                    break;
-                default:
-                    System.out.println("Lựa chọn không tồn tại");
-                    break;
-            }
-        }while (again);
+        } while (again);
     }
 
     public void addGradeUI() {
@@ -266,6 +229,43 @@ public class CRUD {
         }
     }
 
-
+    public void seclectCRUD() {
+        boolean again = true;
+        do {
+            System.out.println("Mời lựa chọn (Nhập số phía trước các lựa chọn):\n1.Nhập thông tin\n2.In thông tin\n3.In toàn bộ danh sách\n4.Cập nhật thông tin\n5.Xóa thông tin\n6.Xóa toàn bộ thông tin của 1 sinh viên\nNhấn 0 để thoát");
+            int option = service.checkOption(scan.nextLine());
+            switch (option) {
+                case 1:
+                    create();
+                    break;
+                case 2:
+                    read();
+                    break;
+                case 3:
+                    System.out.println(readAll());
+                    break;
+                case 4:
+                    update();
+                    break;
+                case 5:
+                    delete();
+                    break;
+                case 6:
+                    deteleAllInfo();
+                    break;
+                case 7:
+                    addGradeUI();
+                    break;
+                case 8:
+                    readGradeUI();
+                    break;
+                case 0:
+                    again = false;
+                    break;
+                default:
+                    System.out.println("Lựa chọn không tồn tại");
+                    break;
+            }
+        } while (again);
+    }
 }
-
