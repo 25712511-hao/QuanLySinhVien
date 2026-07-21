@@ -1,7 +1,7 @@
 package Entity;
 
 public class Grade {
-    private int studentId;
+    private String studentId;
     private String subjectId;
     private double scoreCc;
     private double scoreGk;
@@ -9,7 +9,7 @@ public class Grade {
 
     public Grade() {}
 
-    public Grade(int studentId, String subjectId, double scoreCc, double scorGk, double scoreCk) {
+    public Grade(String studentId, String subjectId, double scoreCc, double scoreGk, double scoreCk) {
         this.studentId = studentId;
         this.subjectId = subjectId;
         this.scoreCc = scoreCc;
@@ -17,8 +17,8 @@ public class Grade {
         this.scoreCk = scoreCk;
     }
 
-    public int getStudentId() { return studentId; }
-    public void setStudentId( int studentId ) { this.studentId = studentId; }
+    public String getStudentId() { return studentId; }
+    public void setStudentId( String studentId ) { this.studentId = studentId; }
 
 
     public String getSubjectId() { return subjectId; }
@@ -43,14 +43,15 @@ public class Grade {
 
 
     public String getGradeLetter() {
-        if ( caculTotalScore() >= 9.0 ) return "A+";
-        if ( caculTotalScore() >= 8.5 ) return "A";
-        if ( caculTotalScore() >= 8.0 ) return "B+";
-        if ( caculTotalScore() >= 7.0 ) return "B";
-        if ( caculTotalScore() >= 6.0 ) return "C+";
-        if ( caculTotalScore() >= 5.5 ) return "C";
-        if ( caculTotalScore() >= 5.0 ) return "D+";
-        if ( caculTotalScore() >= 4.0 ) return "D";
+        double toTal = caculTotalScore();
+        if ( toTal >= 9.0 ) return "A+";
+        if ( toTal >= 8.5 ) return "A";
+        if ( toTal >= 8.0 ) return "B+";
+        if ( toTal >= 7.0 ) return "B";
+        if ( toTal >= 6.0 ) return "C+";
+        if ( toTal >= 5.5 ) return "C";
+        if ( toTal >= 5.0 ) return "D+";
+        if ( toTal >= 4.0 ) return "D";
         return "F";
     }
 

@@ -5,21 +5,25 @@ import Control.StudentBusinessLogic;
 import Control.UpdateSelection;
 import java.util.ArrayList;
 import java.util.Scanner;
+import Entity.Grade;
+import java.util.List;
 
 public class CRUD {
     Scanner scan = new Scanner(System.in);
     StudentBusinessLogic service = new StudentBusinessLogic();
-    DataInput ipnut = new DataInput(service.getStorage());
+    DataInput input = new DataInput(service.getStorage());
 
     public void create() {
         boolean again = false;
         do {
-            String name = ipnut.setNameInput();
-            String id = ipnut.setIDInput();
-            int year = ipnut.setYearInput();
-            String schoolClass = ipnut.setSchoolClassInput();
-            String email = ipnut.setEmailInput();
-            int intakeNumber = ipnut.setIntakeNumberInput();
+            again = false;
+
+            String name = input.setNameInput();
+            String id = input.setIDInput();
+            int year = input.setYearInput();
+            String schoolClass = input.setSchoolClassInput();
+            String email = input.setEmailInput();
+            int intakeNumber = input.setIntakeNumberInput();
 
             boolean sucess = service.saveData(name, id, year, schoolClass, email, intakeNumber);
             if (sucess) {
@@ -191,6 +195,12 @@ public class CRUD {
                 case 6:
                     deteleAllInfo();
                     break;
+                case 7:
+                    addGradeUI();
+                    break;
+                case 8:
+                    readGradeUI();
+                    break;
                 case 0:
                     again = false;
                     break;
@@ -200,5 +210,62 @@ public class CRUD {
             }
         }while (again);
     }
+
+    public void addGradeUI() {
+        System.out.print("Nhập MSSV cần nhập điểm: ");
+        String id = scan.nextLine();
+        Student sv = service.getStudentById(id);
+
+        if (sv == null) {
+            System.out.println("Không tìm thấy sinh viên có MSSV: " + id);
+            return;
+        }
+
+        System.out.println("Đang nhập điểm cho sinh viên: " + sv.getName());
+        System.out.print("Nhập mã môn học: ");
+        String subjectId = scan.nextLine();
+
+        System.out.print("Nhập điểm Chuyên cần: ");
+        double cc = Double.parseDouble(scan.nextLine());
+
+        System.out.print("Nhập điểm Giữa kỳ: ");
+        double gk = Double.parseDouble(scan.nextLine());
+
+        System.out.print("Nhập điểm Cuối kỳ: ");
+        double ck = Double.parseDouble(scan.nextLine());
+
+        boolean success = service.addGradeForStudent(id, subjectId, cc, gk, ck);
+        if (success) {
+            System.out.println("Thêm điểm thành công!");
+        } else {
+            System.out.println("Thêm điểm thất bại!");
+        }
+    }
+
+    public void readGradeUI() {
+        System.out.print("Nhập MSSV cần xem bảng điểm: ");
+        String id = scan.nextLine();
+        Student sv = service.getStudentById(id);
+
+        if (sv == null) {
+            System.out.println("Không tìm thấy sinh viên!");
+            return;
+        }
+
+        List<Grade> grades = service.getGradesByStudentId(id);
+        System.out.println("\n========== BẢNG ĐIỂM SỐ ==========");
+        System.out.println("Sinh viên: " + sv.getName() + " | MSSV: " + sv.getId() + " | Lớp: " + sv.getSchoolClass());
+
+        if (grades == null || grades.isEmpty()) {
+            System.out.println("Sinh viên này chưa có điểm môn nào!");
+        } else {
+            for (Grade g : grades) {
+                System.out.printf("Môn: %-8s | CC: %-4.1f | GK: %-4.1f | CK: %-4.1f | Tổng: %-4.2f\n",
+                        g.getSubjectId(), g.getScoreCc(), g.getScoreGk(), g.getScoreCk(), g.caculTotalScore());
+            }
+        }
+    }
+
+
 }
 

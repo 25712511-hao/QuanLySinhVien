@@ -5,7 +5,7 @@ import Entity.Student;
 import java.util.ArrayList;
 
 public class StudentRepository {
-    ArrayList<Student> students = new ArrayList<>();
+    private ArrayList<Student> students = new ArrayList<>();
     public ArrayList<Student> saveData(){
         return students;
     }

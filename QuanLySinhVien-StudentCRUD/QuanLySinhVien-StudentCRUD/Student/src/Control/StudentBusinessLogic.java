@@ -1,12 +1,14 @@
 package Control;
-
+import Entity.Grade;
 import Entity.Student;
 import Repository.StudentRepository;
 import Control.Interfaces.ITypeCasting;
 import java.util.ArrayList;
+import java.util.List;
 
 public class StudentBusinessLogic implements ITypeCasting{
     StudentRepository storage = new StudentRepository();
+    Repository.GradeRepository gradeStorage = new Repository.GradeRepository();
     CheckStorage checkStorage = new CheckStorage(storage);
     CheckData checkData = new CheckData(storage);
     CheckedResult validable;
@@ -171,4 +173,21 @@ public class StudentBusinessLogic implements ITypeCasting{
             return true;
         }
     }
+
+    public boolean addGradeForStudent(String studentId, String subjectId, double cc, double gk, double ck) {
+        Student stu = checkStorage.found(studentId);
+        if (stu == null) {
+            return false;
+        }
+        Grade newGrade = new Grade(studentId, subjectId, cc, gk, ck);
+        gradeStorage.addGrade(newGrade);
+        return true;
+    }
+
+
+    public List<Grade> getGradesByStudentId(String studentId) {
+        return gradeStorage.getGradesByStudentId(studentId);
+    }
+
+
 }
